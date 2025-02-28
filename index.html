@@ -51,8 +51,11 @@
             left: 50%;
             transform: translateX(-50%);
         }
-        img {
+        img:not(#features-img, #skills-img) {
             filter: drop-shadow(0px 0px 10px red);
+        }
+        .features-row img {
+            width: 18%;
         }
         @keyframes zoomIn {
             from { transform: scale(0.8); opacity: 0; }
@@ -91,18 +94,18 @@
     </header>
 
     <section id="features" class="container my-5 text-center">
-        <img src="features.png" class="img-fluid" alt="Features">
-        <div class="row mt-4">
-            <div class="col-md-4"><h4 class="hex-box">Money Prize</h4><img src="moneyprize.png" class="img-fluid" alt="Money Prize"></div>
-            <div class="col-md-4"><h4 class="hex-box">Referral Bonus</h4><img src="referal.png" class="img-fluid" alt="Referral Bonus"></div>
-            <div class="col-md-4"><h4 class="hex-box">Instant Withdrawals</h4><img src="withdraw.png" class="img-fluid" alt="Instant Withdrawals"></div>
-            <div class="col-md-4"><h4 class="hex-box">24x7 Customer Support</h4><img src="247 customer support.png" class="img-fluid" alt="24x7 Support"></div>
-            <div class="col-md-4"><h4 class="hex-box">Scratch Card Rewards</h4><img src="scratch card.png" class="img-fluid" alt="Scratch Card"></div>
+        <img id="features-img" src="features.png" class="img-fluid" alt="Features">
+        <div class="row mt-4 features-row d-flex justify-content-center">
+            <img src="moneyprize.png" class="img-fluid" alt="Money Prize">
+            <img src="referal.png" class="img-fluid" alt="Referral Bonus">
+            <img src="withdraw.png" class="img-fluid" alt="Instant Withdrawals">
+            <img src="247 customer support.png" class="img-fluid" alt="24x7 Support">
+            <img src="scratch card.png" class="img-fluid" alt="Scratch Card">
         </div>
     </section>
 
     <section id="skills" class="container my-5 text-center">
-        <img src="skill.png" class="img-fluid" alt="Skills">
+        <img id="skills-img" src="skill.png" class="img-fluid" alt="Skills">
     </section>
 
     <section id="payment" class="container my-5 text-center">
