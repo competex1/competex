@@ -59,6 +59,22 @@
             display: block;
             margin: 10px auto;
         }
+        .download-btn {
+            background-color: #8B0000;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 10px red;
+            transition: 0.3s ease-in-out;
+        }
+        .download-btn:hover {
+            box-shadow: 0 0 20px red;
+            transform: scale(1.05);
+        }
         @keyframes zoomIn {
             from { transform: scale(0.8); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
@@ -118,7 +134,7 @@
     <section id="download" class="text-center my-5">
         <h2 class="hex-box">Download the App</h2>
         <p>Get started today! Click below to download.</p>
-        <a href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file" class="btn btn-success btn-lg">Download Now</a>
+        <a href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file" class="download-btn">Download Now</a>
     </section>
 
     <footer class="bg-dark text-white text-center py-3">
