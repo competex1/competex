@@ -2,45 +2,98 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CompeteX - Esports Gaming</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CompeteX - FF Tournament App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
         body {
             background-color: black;
             color: white;
             font-family: 'Bebas Neue', sans-serif;
+        }
+        .hero {
+            background: url('banner.jpg') no-repeat center center/cover;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            margin: 0;
-            padding: 0;
+            font-size: 1.5rem;
+            padding: 20px;
+            position: relative;
         }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .hex-box {
+            display: inline-block;
+            padding: 8px 16px;
+            position: relative;
             background-color: black;
-            padding: 10px 20px;
-            border-bottom: 2px solid red;
+            color: white;
+            border: 2px solid red;
+            box-shadow: 0 0 8px red;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1rem;
         }
-
-        .navbar-brand {
-            display: flex;
-            align-items: center;
+        .hex-box:before, .hex-box:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
         }
-
-        .navbar-brand .logo {
-            width: 40px;
-            margin-right: 10px;
+        .hex-box:before {
+            top: -10px;
+            border-bottom: 10px solid red;
+            left: 50%;
+            transform: translateX(-50%);
         }
-
-        .menu-icon {
-            font-size: 2rem;
+        .hex-box:after {
+            bottom: -10px;
+            border-top: 10px solid red;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        img:not(#features-img, #esport-img, #payment-img, #android-img) {
+            filter: drop-shadow(0px 0px 8px red);
+            transition: transform 0.5s ease-in-out;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        .features img, .esport img, .payment img {
+            width: 90%;
+            margin: 10px auto;
+            display: block;
             cursor: pointer;
-            color: red;
         }
-
+        .download-btn {
+            background-color: black;
+            color: red;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border: 2px solid red;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 8px red;
+            transition: 0.3s ease-in-out;
+        }
+        .download-btn:hover {
+            box-shadow: 0 0 16px red;
+            transform: scale(1.05);
+        }
+        .navbar {
+            position: relative;
+        }
+        .navbar-toggler {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background-color: red;
+            padding: 10px;
+            border-radius: 5px;
+        }
         .menu-overlay {
             position: fixed;
             top: 0;
@@ -52,149 +105,71 @@
             padding: 20px;
             transition: right 0.3s ease-in-out;
         }
-
         .menu-overlay.active {
             right: 0;
         }
-
         .menu-overlay .close-btn {
-            font-size: 2rem;
-            color: red;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: red;
+            padding: 5px;
+            border-radius: 50%;
             cursor: pointer;
-            text-align: right;
         }
-
         .menu-overlay ul {
             list-style: none;
             padding: 0;
         }
-
         .menu-overlay ul li {
+            margin: 20px 0;
+            text-align: center;
             font-size: 1.5rem;
-            padding: 15px;
-            border: 2px solid white;
-            margin: 10px;
-            cursor: pointer;
-        }
-
-        .hero {
-            background: url('images/banner.jpg') no-repeat center center/cover;
-            height: 50vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .download-btn {
-            background: black;
-            color: red;
-            padding: 12px 24px;
-            border: 2px solid red;
-            box-shadow: 0 0 8px red;
-            text-decoration: none;
-            font-size: 1.5rem;
-        }
-
-        .features .title-img {
-            width: 90%;
-            margin-bottom: 20px;
-        }
-
-        .feature-list img {
-            width: 80%;
-            margin: 10px auto;
-            display: block;
-        }
-
-        .esports img {
-            width: 90%;
-            margin-bottom: 10px;
-        }
-
-        .payment img {
-            width: 80%;
-        }
-
-        .sticky-download {
-            position: fixed;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            background: black;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px red;
-        }
-
-        .sticky-download img {
-            width: 50px;
-            margin-right: 10px;
-        }
-
-        .highlight {
-            color: yellow;
             font-weight: bold;
+            border: 2px solid white;
+            padding: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="navbar-brand">
-            <img src="images/competex.jpg" alt="CompeteX Logo" class="logo">
-            <span>CompeteX</span>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">CompeteX <img src="competex.jpg" alt="CompeteX Logo"></a>
+            <div class="navbar-toggler" onclick="toggleMenu()">☰</div>
         </div>
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
     </nav>
 
-    <!-- Mobile Menu -->
     <div class="menu-overlay" id="menuOverlay">
         <div class="close-btn" onclick="toggleMenu()">✖</div>
         <ul>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Download</a></li>
-            <li><a href="#">About</a></li>
+            <li>Contact</li>
+            <li>Download</li>
+            <li>About</li>
         </ul>
     </div>
-
-    <!-- Hero Section -->
-    <section class="hero">
+    
+    <div class="hero">
         <h1>Welcome to CompeteX</h1>
-        <a href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file" class="download-btn">Download Now</a>
-    </section>
+        <a class="download-btn" href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file">Download Now</a>
+    </div>
 
-    <!-- Features Section -->
-    <section class="features">
-        <img src="images/features.png" alt="Features" class="title-img">
-        <div class="feature-list">
-            <img src="images/moneyprize.png" alt="Money Prize">
-            <img src="images/referal.png" alt="Referral Rewards">
-            <img src="images/withdraw.png" alt="Instant Withdrawal">
-            <img src="images/247 customer support.png" alt="24/7 Support">
-            <img src="images/scratch card.png" alt="Scratch Cards">
-        </div>
-    </section>
-
-    <!-- Esports Section -->
-    <section class="esports">
-        <img src="images/esport.png" alt="Esports">
-        <img src="images/freefire.jpg" alt="Free Fire Game">
-        <p>CompeteX is India’s premier esports gaming app, designed for gamers of all skill levels...</p>
-    </section>
-
-    <!-- Payment Section -->
-    <section class="payment">
-        <img src="images/payment.png" alt="Payment Methods">
-    </section>
-
-    <!-- Sticky Download Button -->
-    <div class="sticky-download">
-        <img src="images/android.png" alt="Android Download">
-        <p>Use <span class="highlight">CompeteX</span> referral and get <span class="highlight">₹10 cash</span></p>
+    <div class="features">
+        <img src="features.png" alt="Features">
+        <img src="moneyprize.png" alt="Money Prize">
+        <img src="referal.png" alt="Referral">
+        <img src="withdraw.png" alt="Withdraw">
+        <img src="247 customer support.png" alt="24/7 Support">
+        <img src="scratch card.png" alt="Scratch Card">
+    </div>
+    
+    <div class="esport">
+        <img src="esport.png" alt="Esports">
+        <img src="freefire.jpg" alt="Free Fire">
+    </div>
+    
+    <div class="payment">
+        <img src="payment.png" alt="Payment">
     </div>
 
     <script>
@@ -202,6 +177,5 @@
             document.getElementById("menuOverlay").classList.toggle("active");
         }
     </script>
-
 </body>
 </html>
