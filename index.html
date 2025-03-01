@@ -116,12 +116,33 @@
             text-align: center;
             padding: 20px;
         }
+        .floating-download {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 1000;
+        }
+        .floating-download img {
+            width: 80px;
+            cursor: pointer;
+            animation: popIn 1s ease-in-out;
+        }
+        .floating-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .floating-text span {
+            color: yellow;
+        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">CompeteX <img src="competex.png" alt="CompeteX Logo"></a>
+            <a class="navbar-brand" href="#">CompeteX <img src="competex.jpg" alt="CompeteX Logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -141,13 +162,12 @@
         </div>
     </nav>
 
-    <section id="esport" class="container my-5 text-center">
-        <img id="esport-img" src="esport.png" class="img-fluid" alt="Esports">
-        <p class="esport-text">
-            CompeteX is India’s premier esports gaming app, designed for gamers of all skill levels to showcase their talent and earn real cash rewards. Play top mobile games like Battlegrounds Mobile India, Free Fire Max, and PUBG Lite in thrilling tournaments and leagues. With prize pools exceeding 25 lakhs distributed monthly, you can compete in solo, duo, or squad matches to win big.<br><br>
-            CompeteX also offers exciting features like scratch cards, instant withdrawals, free leagues, and frequent matches to keep you engaged. If you're ready to turn your gaming skills into real rewards, join CompeteX today and start your journey to becoming an esports champion! 🚀🔥
-        </p>
-    </section>
+    <div class="floating-download">
+        <a href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file">
+            <img src="android.png" alt="Download CompeteX">
+        </a>
+        <p class="floating-text">Use <span>CompeteX</span> referral and get <span>10 Rs Cash</span></p>
+    </div>
 
     <footer class="bg-dark text-white text-center py-3">
         &copy; 2025 CompeteX. All rights reserved.
