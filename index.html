@@ -54,7 +54,7 @@
             left: 50%;
             transform: translateX(-50%);
         }
-        img:not(#features-img, #esport-img, #payment-img) {
+        img:not(#features-img, #esport-img, #payment-img, #android-img) {
             filter: drop-shadow(0px 0px 8px red);
             transition: transform 0.5s ease-in-out;
         }
@@ -97,17 +97,24 @@
             padding: 8px;
             border-radius: 10px;
             box-shadow: 0 0 8px red;
+            width: 90%;
+            max-width: 400px;
         }
-        .floating-download img {
-            width: 80px;
+        #android-img {
+            width: 100%;
+            max-width: 400px;
             cursor: pointer;
-            filter: drop-shadow(0px 0px 8px red);
+            filter: drop-shadow(0px 0px 12px red);
+            display: block;
+            margin: 0 auto;
         }
         .floating-text {
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-weight: bold;
             margin-top: 5px;
             color: white;
+            text-align: center;
+            width: 100%;
         }
         .floating-text span {
             color: yellow;
@@ -129,7 +136,7 @@
     
     <div class="hero">
         <h1>Welcome to CompeteX</h1>
-        <a class="download-btn" href="https://drive.usercontent.google.com/download?id=1tA4MIvMQHiB2fOtSxSO4SQxL1C41SKc6&export=download">Download Now</a>
+        <a class="download-btn" href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file">Download Now</a>
     </div>
 
     <div class="features text-center mt-4">
@@ -152,8 +159,8 @@
     </div>
     
     <div class="floating-download">
-        <a href="https://drive.usercontent.google.com/download?id=1tA4MIvMQHiB2fOtSxSO4SQxL1C41SKc6&export=download">
-            <img src="android.png" alt="Download CompeteX">
+        <a href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file">
+            <img id="android-img" src="android.png" alt="Download CompeteX">
         </a>
         <p class="floating-text">Use <span>CompeteX</span> referral and get <span>10 Rs Cash</span></p>
     </div>
