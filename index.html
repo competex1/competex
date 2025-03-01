@@ -60,11 +60,11 @@
             margin: 10px auto;
         }
         .download-btn {
-            background-color: #8B0000;
-            color: white;
+            background-color: black;
+            color: red;
             padding: 15px 30px;
             font-size: 1.2rem;
-            border: none;
+            border: 2px solid red;
             border-radius: 5px;
             text-decoration: none;
             display: inline-block;
@@ -83,23 +83,37 @@
             from { transform: translateY(50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
+        .navbar-toggler {
+            border: none;
+            outline: none;
+        }
+        .offcanvas {
+            background-color: black;
+            color: white;
+        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="#">CompeteX</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="#navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#games">Games</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://api.whatsapp.com/send?phone=8653010959&text=Hi%20May%20I%20Know%20More%20About%20Your%20App">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-primary text-white" href="#download">Download</a></li>
-                </ul>
+            <div class="offcanvas offcanvas-end" id="navbarNav">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">Menu</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#games">Games</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://api.whatsapp.com/send?phone=8653010959&text=Hi%20May%20I%20Know%20More%20About%20Your%20App">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#download">Download</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
