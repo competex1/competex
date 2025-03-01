@@ -9,23 +9,17 @@
         body {
             background-color: black;
             color: white;
+            font-family: Arial, sans-serif;
         }
         .hero {
-            background: url('https://www.competeX.com/assets/images/banner.jpg') no-repeat center center/cover;
+            background: url('banner.jpg') no-repeat center center/cover;
             height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             font-size: 2rem;
-            animation: zoomIn 1s ease-in-out;
             position: relative;
-        }
-        .hero .download-btn {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
         }
         .hex-box {
             display: inline-block;
@@ -36,7 +30,7 @@
             border: 2px solid red;
             box-shadow: 0 0 10px red;
             text-align: center;
-            animation: slideIn 1s ease-in-out;
+            font-weight: bold;
         }
         .hex-box:before, .hex-box:after {
             content: "";
@@ -65,10 +59,10 @@
         img:hover {
             transform: scale(1.1);
         }
-        .features-row img, .payment-section img {
+        .features img {
             width: 100%;
-            display: block;
             margin: 10px auto;
+            display: block;
             cursor: pointer;
         }
         .download-btn {
@@ -77,7 +71,6 @@
             padding: 15px 30px;
             font-size: 1.2rem;
             border: 2px solid red;
-            border-radius: 5px;
             text-decoration: none;
             display: inline-block;
             box-shadow: 0 0 10px red;
@@ -91,31 +84,6 @@
             height: 40px;
             margin-left: 10px;
         }
-        .offcanvas {
-            background-color: black;
-            color: white;
-            text-align: center;
-        }
-        .offcanvas .nav-link {
-            font-size: 1.5rem;
-            font-weight: bold;
-            border: 2px solid white;
-            padding: 10px;
-            margin: 5px;
-            display: block;
-            box-shadow: 0 0 10px white;
-        }
-        .offcanvas-header .btn-close {
-            background-color: red;
-            border-radius: 50%;
-            opacity: 1;
-        }
-        .esport-text {
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-align: center;
-            padding: 20px;
-        }
         .floating-download {
             position: fixed;
             bottom: 20px;
@@ -127,7 +95,6 @@
         .floating-download img {
             width: 80px;
             cursor: pointer;
-            animation: popIn 1s ease-in-out;
         }
         .floating-text {
             font-size: 1.2rem;
@@ -143,27 +110,35 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="#">CompeteX <img src="competex.jpg" alt="CompeteX Logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end" id="navbarNav">
-                <div class="offcanvas-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#esport">Esports</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#payment">Payment</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#download">Download</a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </nav>
+    
+    <div class="hero">
+        <h1>Welcome to CompeteX</h1>
+        <a class="download-btn" href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID">Download Now</a>
+    </div>
 
+    <div class="features text-center mt-4">
+        <img id="features-img" src="features.png" alt="Key Features">
+        <img src="moneyprize.png" alt="Money Prize">
+        <img src="referal.png" alt="Referral Bonus">
+        <img src="withdraw.png" alt="Withdraw Instantly">
+        <img src="247 customer support.png" alt="24/7 Support">
+        <img src="scratch card.png" alt="Scratch Cards">
+    </div>
+
+    <div class="text-center mt-4">
+        <img id="esport-img" src="esport.png" alt="Esports">
+        <p class="text-bold">CompeteX is the ultimate esports gaming app where you can compete in top mobile games like Free Fire Max, PUBG Lite, and more. Win real cash, participate in leagues, and claim rewards instantly. Join now and become a gaming champion!</p>
+    </div>
+
+    <div class="payment text-center mt-4">
+        <h2 class="hex-box">Payment</h2>
+        <img src="payment.png" alt="Payment Methods">
+    </div>
+    
     <div class="floating-download">
-        <a href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file">
+        <a href="https://drive.google.com/uc?export=download&id=YOUR_FILE_ID">
             <img src="android.png" alt="Download CompeteX">
         </a>
         <p class="floating-text">Use <span>CompeteX</span> referral and get <span>10 Rs Cash</span></p>
@@ -172,7 +147,5 @@
     <footer class="bg-dark text-white text-center py-3">
         &copy; 2025 CompeteX. All rights reserved.
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
