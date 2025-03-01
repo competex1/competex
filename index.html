@@ -19,6 +19,13 @@
             text-align: center;
             font-size: 2rem;
             animation: zoomIn 1s ease-in-out;
+            position: relative;
+        }
+        .hero .download-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .hex-box {
             display: inline-block;
@@ -53,11 +60,16 @@
         }
         img:not(#features-img, #skills-img) {
             filter: drop-shadow(0px 0px 10px red);
+            transition: transform 0.5s ease-in-out;
         }
-        .features-row img {
+        img:hover {
+            transform: scale(1.1);
+        }
+        .features-row img, .payment-section img {
             width: 100%;
             display: block;
             margin: 10px auto;
+            cursor: pointer;
         }
         .download-btn {
             background-color: black;
@@ -75,9 +87,9 @@
             box-shadow: 0 0 20px red;
             transform: scale(1.05);
         }
-        .navbar-toggler {
-            border: none;
-            outline: none;
+        .navbar-brand img {
+            height: 40px;
+            margin-left: 10px;
         }
         .offcanvas {
             background-color: black;
@@ -85,8 +97,13 @@
             text-align: center;
         }
         .offcanvas .nav-link {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: bold;
+            border: 2px solid white;
+            padding: 10px;
+            margin: 5px;
+            display: block;
+            box-shadow: 0 0 10px white;
         }
         .offcanvas-header .btn-close {
             background-color: red;
@@ -98,21 +115,19 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">CompeteX</a>
+            <a class="navbar-brand" href="#">CompeteX <img src="competex.png" alt="CompeteX Logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="offcanvas offcanvas-end" id="navbarNav">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title">Menu</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#games">Games</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
-                        <li class="nav-item"><a class="nav-link" href="https://api.whatsapp.com/send?phone=8653010959&text=Hi%20May%20I%20Know%20More%20About%20Your%20App">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#payment">Payment</a></li>
                         <li class="nav-item"><a class="nav-link" href="#download">Download</a></li>
                     </ul>
                 </div>
@@ -124,33 +139,23 @@
         <div>
             <h1>Welcome to CompeteX</h1>
             <p>Join tournaments and win real cash prizes!</p>
+            <a href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file" class="download-btn">Download Now</a>
         </div>
     </header>
 
     <section id="features" class="container my-5 text-center">
         <img id="features-img" src="features.png" class="img-fluid" alt="Features">
         <div class="features-row">
-            <img src="moneyprize.png" class="img-fluid" alt="Money Prize">
-            <img src="referal.png" class="img-fluid" alt="Referral Bonus">
-            <img src="withdraw.png" class="img-fluid" alt="Instant Withdrawals">
-            <img src="247 customer support.png" class="img-fluid" alt="24x7 Support">
-            <img src="scratch card.png" class="img-fluid" alt="Scratch Card">
+            <a href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file"><img src="moneyprize.png" class="img-fluid" alt="Money Prize"></a>
+            <a href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file"><img src="referal.png" class="img-fluid" alt="Referral Bonus"></a>
+            <a href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file"><img src="withdraw.png" class="img-fluid" alt="Instant Withdrawals"></a>
+            <a href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file"><img src="247 customer support.png" class="img-fluid" alt="24x7 Support"></a>
+            <a href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file"><img src="scratch card.png" class="img-fluid" alt="Scratch Card"></a>
         </div>
     </section>
 
     <section id="skills" class="container my-5 text-center">
         <img id="skills-img" src="skill.png" class="img-fluid" alt="Skills">
-    </section>
-
-    <section id="payment" class="container my-5 text-center">
-        <h2 class="hex-box">Payment</h2>
-        <img src="payment.png" class="img-fluid d-block mx-auto" alt="Payment Methods">
-    </section>
-
-    <section id="download" class="text-center my-5">
-        <h2 class="hex-box">Download the App</h2>
-        <p>Get started today! Click below to download.</p>
-        <a href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file" class="download-btn">Download Now</a>
     </section>
 
     <footer class="bg-dark text-white text-center py-3">
