@@ -6,35 +6,11 @@
     <title>CompeteX - FF Tournament App</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         body {
             background-color: black;
             color: white;
             font-family: 'Bebas Neue', sans-serif;
-        }
-        .navbar {
-            background-color: black;
-        }
-        .navbar-brand img {
-            width: 50px;
-        }
-        .navbar-toggler {
-            border: none;
-            outline: none;
-        }
-        .menu-box {
-            background-color: black;
-            border: 2px solid white;
-            box-shadow: 0 0 8px white;
-            padding: 10px;
-            text-align: center;
-        }
-        .menu-box a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 10px;
         }
         .hero {
             background: url('banner.jpg') no-repeat center center/cover;
@@ -46,6 +22,53 @@
             font-size: 1.5rem;
             padding: 20px;
             position: relative;
+        }
+        .hex-box {
+            display: inline-block;
+            padding: 8px 16px;
+            position: relative;
+            background-color: black;
+            color: white;
+            border: 2px solid red;
+            box-shadow: 0 0 8px red;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        .hex-box:before, .hex-box:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+        }
+        .hex-box:before {
+            top: -10px;
+            border-bottom: 10px solid red;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .hex-box:after {
+            bottom: -10px;
+            border-top: 10px solid red;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        img {
+            filter: drop-shadow(0px 0px 8px red);
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+            display: block;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        .features img {
+            width: 90%;
+            margin: 10px auto;
+            display: block;
+            cursor: pointer;
         }
         .download-btn {
             background-color: black;
@@ -62,7 +85,7 @@
             box-shadow: 0 0 16px red;
             transform: scale(1.05);
         }
-        .sticky-download {
+        .fixed-bottom-img {
             position: fixed;
             bottom: 10px;
             left: 50%;
@@ -71,36 +94,30 @@
             background-color: black;
             padding: 10px;
             box-shadow: 0px 0px 10px red;
+        }
+        .footer {
             text-align: center;
-        }
-        .features img {
-            width: 90%;
-            margin: 10px auto;
-            display: block;
-            cursor: pointer;
-        }
-        .container img {
-            filter: drop-shadow(0px 0px 8px red);
-        }
-        .payment-img {
-            width: 60%;
+            padding: 20px;
+            background-color: black;
+            color: white;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-dark">
+    <nav class="navbar navbar-dark bg-dark">
         <div class="container d-flex justify-content-between">
-            <a class="navbar-brand" href="#"><img src="competex.jpg" alt="CompeteX Logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="#"><img src="competex.jpg" alt="CompeteX Logo" style="width:50px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-        </div>
-        <div class="collapse" id="navbarNav">
-            <div class="menu-box">
-                <a href="https://api.whatsapp.com/send?phone=8653010959&text=i%20want%20to%20know%20more%20about%20the%20app%20">Contact</a>
-                <a href="#">Features</a>
-                <a href="#">Esports</a>
-                <a href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file">Download</a>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ms-auto text-center">
+                    <li class="nav-item"><a class="nav-link hex-box" href="#">Features</a></li>
+                    <li class="nav-item"><a class="nav-link hex-box" href="#">Esport</a></li>
+                    <li class="nav-item"><a class="nav-link hex-box" href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file">Download</a></li>
+                    <li class="nav-item"><a class="nav-link hex-box" href="https://api.whatsapp.com/send?phone=8653010959&text=i%20want%20to%20know%20more%20about%20the%20app%20">Contact</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -109,7 +126,7 @@
         <h1>Welcome to CompeteX</h1>
         <a class="download-btn" href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file">Download Now</a>
     </div>
-    
+
     <div class="container mt-4 text-center">
         <img src="features.png" alt="Features">
         <div class="features">
@@ -122,26 +139,29 @@
     </div>
     
     <div class="container mt-4 text-center">
-        <img src="esport.png" alt="Esports">
+        <img src="esport.png" alt="Esports" style="width:50%;">
         <img src="freefire.jpg" alt="Free Fire">
         <br><br>
         <p style="font-weight: bold;">
-            CompeteX is India’s premier esports gaming app, designed for gamers of all skill levels to showcase their talent and earn real cash rewards. Play top mobile games like Battlegrounds Mobile India, Free Fire Max, and PUBG Lite in thrilling tournaments and leagues. With prize pools exceeding 25 lakhs distributed monthly, you can compete in solo, duo, or squad matches to win big.
-        </p>
-        <p>
-            CompeteX also offers exciting features like scratch cards, instant withdrawals, free leagues, and frequent matches to keep you engaged. If you're ready to turn your gaming skills into real rewards, join CompeteX today and start your journey to becoming an esports champion! 🚀🔥
+            CompeteX is India’s premier esports gaming app, designed for gamers of all skill levels to showcase their talent and earn real cash rewards...
         </p>
     </div>
     
     <div class="container mt-4 text-center">
-        <img class="payment-img" src="payment.png" alt="Payment">
+        <img src="payment.png" alt="Payment" style="width:55%;">
     </div>
     
-    <div class="sticky-download">
-        <img src="android.png" alt="Android Download" style="width:100%;">
-        <p style="font-weight:bold; font-size:1.2rem; color:white;">Use <span style="color:yellow;">CompeteX</span> referral and get <span style="color:yellow;">10 Rs Cash</span></p>
+    <img src="android.png" alt="Android Download" class="fixed-bottom-img">
+
+    <div class="container mt-4 text-center">
+        <h2>About CompeteX</h2>
+        <p>CompeteX is a leading esports gaming platform offering competitive tournaments, real cash rewards, and an engaging community for gamers...</p>
     </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <footer class="footer">
+        <img src="competex.jpg" alt="CompeteX Logo" style="width:80px;"><br>
+        <p>Contact: 8653010959</p>
+        <img src="youtube-logo.png" alt="YouTube" style="width:40px;">
+    </footer>
 </body>
 </html>
