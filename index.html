@@ -88,7 +88,7 @@
             transform: scale(1.05);
         }
         .fixed-bottom-img {
-            position: absolute;
+            position: fixed;
             bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
@@ -96,7 +96,6 @@
             background-color: black;
             padding: 10px;
             box-shadow: 0px 0px 10px red;
-            cursor: move;
         }
         .rounded-img {
             border-radius: 15px;
@@ -193,7 +192,7 @@
     </div>
 
     <div class="container mt-4 text-center">
-        <img src="android.png" alt="Android Download" class="fixed-bottom-img" id="movable-img">
+        <img src="android.png" alt="Android Download" class="fixed-bottom-img">
     </div>
 
     <footer>
@@ -210,49 +209,5 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Make the image movable
-        const img = document.getElementById('movable-img');
-        let isDragging = false;
-        let xOffset = 0;
-        let yOffset = 0;
-
-        img.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            xOffset = e.clientX - img.offsetLeft;
-            yOffset = e.clientY - img.offsetTop;
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                img.style.left = `${e.clientX - xOffset}px`;
-                img.style.top = `${e.clientY - yOffset}px`;
-            }
-        });
-
-        // For touch devices
-        img.addEventListener('touchstart', (e) => {
-            isDragging = true;
-            const touch = e.touches[0];
-            xOffset = touch.clientX - img.offsetLeft;
-            yOffset = touch.clientY - img.offsetTop;
-        });
-
-        document.addEventListener('touchend', () => {
-            isDragging = false;
-        });
-
-        document.addEventListener('touchmove', (e) => {
-            if (isDragging) {
-                const touch = e.touches[0];
-                img.style.left = `${touch.clientX - xOffset}px`;
-                img.style.top = `${touch.clientY - yOffset}px`;
-            }
-        });
-    </script>
 </body>
 </html>
