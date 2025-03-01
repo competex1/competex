@@ -55,14 +55,16 @@
             left: 50%;
             transform: translateX(-50%);
         }
-        img:not(#features-img, #esport-img, #payment-img, #android-img) {
+        img {
             filter: drop-shadow(0px 0px 8px red);
             transition: transform 0.5s ease-in-out;
+            width: 100%;
+            display: block;
         }
         img:hover {
             transform: scale(1.05);
         }
-        .features img, .esport img, .payment img {
+        .features img {
             width: 90%;
             margin: 10px auto;
             display: block;
@@ -83,99 +85,47 @@
             box-shadow: 0 0 16px red;
             transform: scale(1.05);
         }
-        .navbar {
-            position: relative;
-        }
-        .navbar-toggler {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            background-color: red;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .menu-overlay {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 250px;
-            height: 100%;
-            background: black;
-            box-shadow: -5px 0 10px red;
-            padding: 20px;
-            transition: right 0.3s ease-in-out;
-        }
-        .menu-overlay.active {
-            right: 0;
-        }
-        .menu-overlay .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: red;
-            padding: 5px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        .menu-overlay ul {
-            list-style: none;
-            padding: 0;
-        }
-        .menu-overlay ul li {
-            margin: 20px 0;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            border: 2px solid white;
-            padding: 10px;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">CompeteX <img src="competex.jpg" alt="CompeteX Logo"></a>
-            <div class="navbar-toggler" onclick="toggleMenu()">☰</div>
+            <a class="navbar-brand" href="#">CompeteX <img src="competex.jpg" alt="CompeteX Logo" style="width:50px;"></a>
         </div>
     </nav>
-
-    <div class="menu-overlay" id="menuOverlay">
-        <div class="close-btn" onclick="toggleMenu()">✖</div>
-        <ul>
-            <li>Contact</li>
-            <li>Download</li>
-            <li>About</li>
-        </ul>
-    </div>
     
     <div class="hero">
         <h1>Welcome to CompeteX</h1>
         <a class="download-btn" href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file">Download Now</a>
     </div>
 
-    <div class="features">
+    <div class="container mt-4 text-center">
         <img src="features.png" alt="Features">
-        <img src="moneyprize.png" alt="Money Prize">
-        <img src="referal.png" alt="Referral">
-        <img src="withdraw.png" alt="Withdraw">
-        <img src="247 customer support.png" alt="24/7 Support">
-        <img src="scratch card.png" alt="Scratch Card">
+        <div class="features">
+            <img src="moneyprize.png" alt="Money Prize">
+            <img src="referal.png" alt="Referral Bonus">
+            <img src="withdraw.png" alt="Withdraw Easily">
+            <img src="247 customer support.png" alt="24/7 Support">
+            <img src="scratch card.png" alt="Scratch Cards">
+        </div>
     </div>
     
-    <div class="esport">
+    <div class="container mt-4 text-center">
         <img src="esport.png" alt="Esports">
         <img src="freefire.jpg" alt="Free Fire">
+        <p style="font-weight: bold;">
+            CompeteX is India’s premier esports gaming app, designed for gamers of all skill levels to showcase their talent and earn real cash rewards. Play top mobile games like Battlegrounds Mobile India, Free Fire Max, and PUBG Lite in thrilling tournaments and leagues. With prize pools exceeding 25 lakhs distributed monthly, you can compete in solo, duo, or squad matches to win big.<br><br>
+            CompeteX also offers exciting features like scratch cards, instant withdrawals, free leagues, and frequent matches to keep you engaged. If you're ready to turn your gaming skills into real rewards, join CompeteX today and start your journey to becoming an esports champion! 🚀🔥
+        </p>
     </div>
     
-    <div class="payment">
-        <img src="payment.png" alt="Payment">
+    <div class="container mt-4 text-center">
+        <img src="payment.png" alt="Payment" style="width:50%;">
     </div>
 
-    <script>
-        function toggleMenu() {
-            document.getElementById("menuOverlay").classList.toggle("active");
-        }
-    </script>
+    <div class="container mt-4 text-center">
+        <img src="android.png" alt="Android Download" style="width:60%; background-color:black; padding:10px; box-shadow:0px 0px 10px red;">
+        <p style="font-weight:bold; font-size:1.2rem; color:white; background-color:black; padding:10px;">Use <span style="color:yellow;">CompeteX</span> referral and get <span style="color:yellow;">10 Rs Cash</span></p>
+    </div>
 </body>
 </html>
