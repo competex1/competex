@@ -24,35 +24,37 @@
             position: relative;
         }
         .hex-box {
-            display: inline-block;
-            padding: 8px 16px;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
             background-color: black;
             color: white;
             border: 2px solid red;
             box-shadow: 0 0 8px red;
             text-align: center;
             font-weight: bold;
-            font-size: 1rem;
-            width: 100%; /* Full width */
+            font-size: 2rem;
+            width: 100%;
         }
         .hex-box:before, .hex-box:after {
             content: "";
             position: absolute;
             width: 0;
             height: 0;
-            border-left: 12px solid transparent;
-            border-right: 12px solid transparent;
+            border-left: 24px solid transparent;
+            border-right: 24px solid transparent;
         }
         .hex-box:before {
-            top: -10px;
-            border-bottom: 10px solid red;
+            top: -20px;
+            border-bottom: 20px solid red;
             left: 50%;
             transform: translateX(-50%);
         }
         .hex-box:after {
-            bottom: -10px;
-            border-top: 10px solid red;
+            bottom: -20px;
+            border-top: 20px solid red;
             left: 50%;
             transform: translateX(-50%);
         }
@@ -139,9 +141,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            font-size: 1.5rem;
         }
         #live-stats p {
-            margin: 5px 0;
+            margin: 10px 0;
+        }
+        #live-stats .row {
+            align-items: center;
         }
     </style>
 </head>
@@ -209,8 +215,14 @@
     <div class="container mt-4 text-center">
         <h2 style="font-weight: bold;">Live Statistics</h2>
         <div class="hex-box" id="live-stats">
-            <p id="downloads">Downloads: 2000</p>
-            <p id="live-users">Live Users: 400</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <p id="downloads">Downloads: 2000</p>
+                </div>
+                <div class="col-md-6">
+                    <p id="live-users">Live Users: 400</p>
+                </div>
+            </div>
             <p id="total-wins">Total Wins: 1000</p>
         </div>
     </div>
