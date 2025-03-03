@@ -45,13 +45,12 @@
         .stat .number {
             font-size: 40px;
             font-weight: bold;
-            color: red;
+            color: white;
+            text-shadow: 0 0 2px red, 0 0 4px red, 0 0 6px red;
         }
         .stat .label {
             font-size: 20px;
             color: #FFFFFF;
-        }
-        .stat .number, .stat .label {
             text-shadow: 0 0 2px red, 0 0 4px red, 0 0 6px red;
         }
         .hex-box {
@@ -283,6 +282,7 @@
     </div>
     
     <div class="hero">
+        <h2 style="color: white; font-weight: bold;">Live Count</h2>
         <div class="stats-section">
             <div class="stats-container">
                 <div class="stat">
@@ -339,12 +339,13 @@
         <div class="hex-box" id="live-stats">
             <div class="row">
                 <div class="col-md-6">
-                    <p id="downloads">Downloads: 2000</p>
+                    <p id="live-downloads">Downloads: 15000</p>
                 </div>
                 <div class="col-md-6">
-                    <p id="live-users">Live Users: 400</p>
+                    <p id="live-winnings">Winnings: 10000</p>
                 </div>
             </div>
+            <p id="live-users">Live Users: 400</p>
             <p id="total-wins">Total Wins: 1000</p>
         </div>
     </div>
@@ -384,23 +385,28 @@
             // Update downloads
             if (addDownloads) {
                 downloads += 10;
-                if (downloads >= 1000000) addDownloads = false;
+                if (downloads >= 2000000) addDownloads = false;
             } else {
-                downloads -= 15;
+                downloads -= 7;
                 if (downloads <= 15000) addDownloads = true;
             }
             document.getElementById('downloads-counter').innerText = downloads;
+            document.getElementById('live-downloads').innerText = 'Downloads: ' + downloads;
 
             // Update winnings
-            winnings += 5;
-            if (winnings >= 10000000) {
-                winnings = 10000;
+            if (addWinnings) {
+                winnings += 10;
+                if (winnings >= 2000000) addWinnings = false;
+            } else {
+                winnings -= 7;
+                if (winnings <= 10000) addWinnings = true;
             }
             document.getElementById('winnings-counter').innerText = winnings;
+            document.getElementById('live-winnings').innerText = 'Winnings: ' + winnings;
         }
 
-        // Update statistics every second
-        setInterval(updateCounters, 1000);
+        // Update statistics every 2 seconds
+        setInterval(updateCounters, 2000);
 
         // Sidebar functionality
         const sidebar = document.getElementById('sidebar');
