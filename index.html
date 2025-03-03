@@ -108,19 +108,31 @@
             animation: slideIn 1s forwards;
         }
         .download-btn {
-            background-color: black;
-            color: red;
+            background-color: red;
+            color: white;
             padding: 12px 24px;
             font-size: 1rem;
-            border: 2px solid red;
+            border: 2px solid white;
             text-decoration: none;
             display: inline-block;
-            box-shadow: 0 0 8px red;
+            box-shadow: 0 0 8px white;
             transition: 0.3s ease-in-out;
+            animation: pulse 1.5s infinite;
         }
         .download-btn:hover {
-            box-shadow: 0 0 16px red;
+            box-shadow: 0 0 16px white;
             transform: scale(1.05);
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
         .fixed-bottom-img {
             position: fixed;
@@ -278,11 +290,12 @@
     </nav>
 
     <div class="container mt-4 text-center">
-        <img src="int.png" alt="Introduction Image" class="my-4" style="width: 100%; max-width: 600px;">
+        <img src="int.png" alt="Introduction Image" class="my-4" style="width: 100%; max-width: 600px; margin-right: auto; margin-left: 15%;">
     </div>
     
     <div class="hero">
-        <h2 style="color: white; font-weight: bold;">Live Count</h2>
+        <a class="download-btn" href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file">Download Now</a>
+        <h2 style="color: white; font-weight: bold; margin-top: 20px;">Live Count</h2>
         <div class="stats-section">
             <div class="stats-container">
                 <div class="stat">
