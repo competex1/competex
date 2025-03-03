@@ -36,13 +36,14 @@
         .stat .number {
             font-size: 40px;
             font-weight: bold;
-            color: #FF4500;
-            text-shadow: 0 0 2px #FF4500, 0 0 4px #FF4500, 0 0 6px #FF4500;
+            color: red;
         }
         .stat .label {
             font-size: 20px;
             color: #FFFFFF;
-            text-shadow: 0 0 2px #FFFFFF, 0 0 4px #FFFFFF, 0 0 6px #FFFFFF;
+        }
+        .stat .number, .stat .label {
+            text-shadow: 0 0 2px red, 0 0 4px red, 0 0 6px red;
         }
         .hex-box {
             display: flex;
@@ -85,6 +86,7 @@
             width: 100%;
             display: block;
             margin: 0 auto;
+            animation: fadeIn 1s forwards;
         }
         img:hover {
             transform: scale(1.05);
@@ -95,6 +97,7 @@
             display: block;
             cursor: pointer;
             filter: none;
+            animation: slideIn 1s forwards;
         }
         .download-btn {
             background-color: black;
@@ -121,6 +124,7 @@
             padding: 10px;
             box-shadow: 0px 0px 10px red;
             cursor: pointer;
+            animation: popUp 1s forwards;
         }
         .rounded-img {
             border-radius: 15px;
@@ -171,6 +175,81 @@
         #live-stats .row {
             align-items: center;
         }
+        /* New styles for hero content */
+        .hero-content {
+            background-color: black;
+            border: 2px solid red;
+            box-shadow: 0 0 10px red;
+            padding: 20px;
+            margin-top: 200px;
+            animation: fadeIn 1s forwards;
+        }
+        /* New styles for sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s forwards;
+        }
+        .sidebar.active {
+            display: flex;
+        }
+        .sidebar .menu-item {
+            background-color: black;
+            color: white;
+            border: 2px solid white;
+            box-shadow: 0 0 8px white;
+            margin: 10px 0;
+            padding: 20px;
+            text-align: center;
+            width: 80%;
+            transition: 0.3s ease-in-out;
+            animation: fadeIn 1s forwards;
+        }
+        .sidebar .menu-item:hover {
+            box-shadow: 0 0 16px white;
+            transform: scale(1.05);
+        }
+        .sidebar .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: red;
+            cursor: pointer;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+        @keyframes popUp {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body>
@@ -183,7 +262,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="https://api.whatsapp.com/send?phone=8653010959&text=i%20want%20to%20know%20more%20about%20the%20app%20">Contact</a>
+                        <a class="nav-link" href="https://api.whatsapp.com/send?phone=8653010959&text=CompeteX">Contact</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Features</a>
@@ -200,18 +279,20 @@
     </nav>
     
     <div class="hero">
-        <img src="int.png" alt="Introduction Image" style="margin-top: 120px;">
-        <div class="stats-container">
-            <div class="stat">
-                <div class="number">15k+</div>
-                <div class="label">Downloads</div>
+        <img src="int.png" alt="Introduction Image" style="margin-top: 200px;">
+        <div class="hero-content">
+            <div class="stats-container">
+                <div class="stat">
+                    <div class="number">15k+</div>
+                    <div class="label">Downloads</div>
+                </div>
+                <div class="stat">
+                    <div class="number">10k+</div>
+                    <div class="label">Winnings</div>
+                </div>
             </div>
-            <div class="stat">
-                <div class="number">10k+</div>
-                <div class="label">Winnings</div>
-            </div>
+            <h1>Welcome to CompeteX</h1>
         </div>
-        <h1>Welcome to CompeteX</h1>
     </div>
 
     <div class="container text-center mt-4">
@@ -231,7 +312,7 @@
     
     <div class="container mt-4 text-center">
         <img src="esport.png" alt="Esports" style="width: 90%;">
-        <img src="freefire.jpg" alt="Free Fire" style="width: 50%; border-radius: 15px; margin-top: 20px;">
+        <img src="freefire.jpg" alt="Free Fire" class="rounded-img" style="width: 50%; margin-top: 20px;">
         <p style="font-weight: bold; margin-top: 20px;">
             CompeteX is India’s premier esports gaming app, designed for gamers of all skill levels to showcase their talent and earn real cash rewards. Play top mobile games like Battlegrounds Mobile India, Free Fire Max, and PUBG Lite in thrilling tournaments and leagues. With prize pools exceeding 25 lakhs distributed monthly, you can compete in solo, duo, or squad matches to win big.<br><br>
             CompeteX also offers exciting features like scratch cards, instant withdrawals, free leagues, and frequent matches to keep you engaged. If you're ready to turn your gaming skills into real rewards, join CompeteX today and start your journey to becoming an esports champion! 🚀🔥
@@ -263,6 +344,15 @@
             </div>
             <p id="total-wins">Total Wins: 1000</p>
         </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <span class="close-btn" id="closeSidebar">&times;</span>
+        <div class="menu-item" data-target="home">Home</div>
+        <div class="menu-item" data-target="features">Features</div>
+        <a class="menu-item" href="https://api.whatsapp.com/send?phone=8653010959&text=CompeteX">Contact</a>
+        <a class="menu-item" href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file">Download</a>
     </div>
 
     <footer>
@@ -309,6 +399,25 @@
 
         // Update statistics every second
         setInterval(updateStats, 1000);
+
+        // Sidebar functionality
+        const sidebar = document.getElementById('sidebar');
+        const closeSidebar = document.getElementById('closeSidebar');
+        document.querySelector('.navbar-toggler').addEventListener('click', () => {
+            sidebar.classList.add('active');
+        });
+        closeSidebar.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+        });
+        document.querySelectorAll('.sidebar .menu-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const target = item.getAttribute('data-target');
+                if (target) {
+                    document.getElementById(target).scrollIntoView({ behavior: 'smooth' });
+                }
+                sidebar.classList.remove('active');
+            });
+        });
     </script>
 </body>
 </html>
