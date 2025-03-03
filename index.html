@@ -2,275 +2,257 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CompeteX - FF Tournament App</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tounnax - Free Fire Tournament App</title>
+    <script src="https://kit.fontawesome.com/8aa17a250d.js" crossorigin="anonymous"></script>
     <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: 'Bebas Neue', sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap');
+        * { padding: 0; margin: 0; overflow-x: hidden; }
+        body { font-family: "Poppins", serif; background: linear-gradient(135deg, #1E1E2C, #333333); color: #FFFFFF; transition: background-color 0.5s, color 0.5s; animation: fadeIn 1s ease-in-out; }
+        header, .section { padding: 10px; }
+        header { display: flex; align-items: center; justify-content: space-between; background: rgba(0, 0, 0, 0.7); color: #FFFFFF; height: 10vh; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; backdrop-filter: blur(10px); }
+        header .logo { display: flex; align-items: center; }
+        header .logo img { width: 40px; border-radius: 50%; }
+        header nav { display: none; }
+        header .menu-icon { display: block; cursor: pointer; }
+        header .menu-icon .bar { display: block; width: 25px; height: 3px; background-color: #fff; margin: 5px 0; }
+        .menu-page { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); z-index: 1001; align-items: center; justify-content: center; }
+        .menu-page.active { display: flex; }
+        .menu-box { width: 80%; max-width: 600px; background-color: #333333; border-radius: 10px; box-shadow: 0 0 10px white; padding: 20px; position: relative; }
+        .menu-box .close-btn { position: absolute; top: 10px; right: 10px; color: red; font-size: 24px; cursor: pointer; }
+        .menu-box ul { list-style: none; padding: 0; text-align: center; }
+        .menu-box ul li { margin: 20px 0; }
+        .menu-box ul li a { color: #FFFFFF; text-decoration: none; font-size: 24px; padding: 10px 20px; display: inline-block; border-radius: 5px; background-color: #333333; box-shadow: 0 0 10px white; }
+        .hero { text-align: center; background: url('banner.jpg') no-repeat center center/cover; color: #FFFFFF; height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-bottom: 20px; animation: fadeIn 1s ease-in-out; }
+        .hero img { width: 80%; max-width: 500px; border-radius: 10px; margin-bottom: 20px; }
+        .hero .stats-container { display: flex; justify-content: center; gap: 50px; }
+        .hero .stat { text-align: center; }
+        .hero .stat .number { font-size: 40px; font-weight: bold; color: #FF4500; text-shadow: 0 0 10px #FF4500, 0 0 20px #FF4500, 0 0 30px #FF4500; }
+        .hero .stat .label { font-size: 20px; color: #FFFFFF; text-shadow: 0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 30px #FFFFFF; }
+        .hero a { margin: 10px; padding: 10px 20px; text-decoration: none; font-size: 18px; color: #fff; border: 1px solid; border-radius: 20px; background-color: #18BC9C; box-shadow: 0 0 10px #18BC9C; animation: pulse 2s infinite; }
+        .about, .features, .screenshots, .testimonials, .download, .contact, .statistics { margin: 20px 0; }
+        .about h2, .features h2, .screenshots h2, .testimonials h2, .download h2, .contact h2, .statistics h2 { text-align: center; font-size: 30px; font-weight: bold; margin-bottom: 20px; animation: fadeIn 1s ease-in-out; }
+        .about p, .features p, .screenshots p, .testimonials p, .download p, .contact p, .statistics p { text-align: center; font-size: 16px; margin: 10px 0; animation: fadeIn 1s ease-in-out; }
+        .features .feature, .testimonials .testimonial { text-align: center; margin: 20px 0; animation: fadeIn 1s ease-in-out; }
+        .features .feature img, .testimonials .testimonial img { width: 100px; height: 100px; margin: 0 auto 10px; display: block; filter: drop-shadow(0 0 20px #18BC9C); }
+        .features .feature h3, .testimonials .testimonial h3 { font-size: 24px; font-weight: bold; }
+        .features .feature p, .testimonials .testimonial p { font-size: 16px; }
+        .screenshots img { width: 100%; max-width: 300px; border-radius: 15px; margin: 0 auto; display: block; filter: drop-shadow(0 0 20px #18BC9C); }
+        .download a { color: #fff; text-decoration: none; display: flex; align-items: center; justify-content: center; flex-direction: row; border: 1px solid; padding: 10px; border-radius: 25px; background-color: #18BC9C; width: 80%; margin: 10px auto; box-shadow: 0 0 10px #18BC9C; animation: pulse 2s infinite; }
+        .contact form { display: flex; flex-direction: column; align-items: center; }
+        .contact form input, .contact form textarea { width: 80%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        .contact form button { padding: 10px 20px; border: none; border-radius: 5px; background-color: #FF6B6B; color: #fff; font-size: 16px; cursor: pointer; box-shadow: 0 0 10px #FF6B6B; }
+        footer { text-align: center; padding: 20px; background-color: #FF6B6B; color: #fff; }
+        .statistics { text-align: center; margin: 20px 0; }
+        .statistics .stat { display: inline-block; margin: 20px; }
+        .statistics .stat h3 { font-size: 24px; margin-bottom: 10px; }
+        .statistics .stat p { font-size: 20px; }
+        .back-to-top { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background-color: #007BFF; color: white; text-align: center; line-height: 50px; border-radius: 50%; font-size: 24px; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: opacity 0.3s ease, transform 0.3s ease; opacity: 0; visibility: hidden; z-index: 1000; }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background-color: #0056b3; transform: scale(1.1); }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-        .hero {
-            background: url('banner.jpg') no-repeat center center/cover;
-            height: 50vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-size: 1.5rem;
-            padding: 20px;
-            position: relative;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
-        .hex-box {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 16px;
-            background-color: black;
-            color: white;
-            border: 2px solid red;
-            box-shadow: 0 0 8px red;
-            text-align: center;
-            font-weight: bold;
-            font-size: 2rem;
-            width: 100%;
-        }
-        .hex-box:before, .hex-box:after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 24px solid transparent;
-            border-right: 24px solid transparent;
-        }
-        .hex-box:before {
-            top: -20px;
-            border-bottom: 20px solid red;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .hex-box:after {
-            bottom: -20px;
-            border-top: 20px solid red;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        img {
-            filter: drop-shadow(0px 0px 8px red);
-            transition: transform 0.5s ease-in-out;
-            width: 100%;
-            display: block;
-            margin: 0 auto;
-        }
-        img:hover {
-            transform: scale(1.05);
-        }
-        .features img {
-            width: 90%;
-            margin: 10px auto;
-            display: block;
-            cursor: pointer;
-            filter: none;
-        }
-        .download-btn {
-            background-color: black;
-            color: red;
-            padding: 12px 24px;
-            font-size: 1rem;
-            border: 2px solid red;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 0 8px red;
-            transition: 0.3s ease-in-out;
-        }
-        .download-btn:hover {
-            box-shadow: 0 0 16px red;
-            transform: scale(1.05);
-        }
-        .fixed-bottom-img {
-            position: fixed;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            background-color: black;
-            padding: 10px;
-            box-shadow: 0px 0px 10px red;
-        }
-        .rounded-img {
-            border-radius: 15px;
-        }
-        .increased-size {
-            width: 65%;
-        }
-        .navbar-nav .nav-item .nav-link {
-            background-color: black;
-            color: white;
-            border: 2px solid white;
-            box-shadow: 0 0 8px white;
-            margin: 5px 0;
-            padding: 10px 20px;
-            transition: 0.3s ease-in-out;
-        }
-        .navbar-nav .nav-item .nav-link:hover {
-            box-shadow: 0 0 16px white;
-            transform: scale(1.05);
-        }
-        .navbar-toggler-icon {
-            filter: invert(1);
-        }
-        footer {
-            background-color: #1a1a1a;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-        footer a {
-            color: red;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-        /* New styles for live statistics */
-        #live-stats {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 1.5rem;
-        }
-        #live-stats p {
-            margin: 10px 0;
-        }
-        #live-stats .row {
-            align-items: center;
+        @media (max-width: 768px) {
+            header nav { display: none; }
+            header .menu-icon { display: block; cursor: pointer; }
+            header .menu-icon .bar { display: block; width: 25px; height: 3px; background-color: #fff; margin: 5px 0; }
+            header nav.active { display: block; position: absolute; top: 10vh; left: 0; width: 100%; background-color: #333333; }
+            header nav ul { flex-direction: column; }
+            header nav ul li { margin: 10px 0; }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="#"><img src="competex.jpg" alt="CompeteX Logo" style="width:50px;"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://api.whatsapp.com/send?phone=8653010959&text=i%20want%20to%20know%20more%20about%20the%20app%20">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Esport</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file">Download</a>
-                    </li>
-                </ul>
+    <header>
+        <div class="logo">
+            <img src="tounnax.webp" alt="Tounnax Logo">
+            <span>Tounnax</span>
+        </div>
+        <div class="social-media-icons">
+            <a href="https://youtube.com/@snipervishalgaming?si=hm6ujGW9fD2JUsmc"><img src="yt.webp" alt="YouTube Logo" style="width: 40px;"></a>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <div class="menu-page" id="menuPage">
+        <div class="menu-box">
+            <div class="close-btn" onclick="toggleMenu()">×</div>
+            <ul>
+                <li><a href="#home" onclick="navigateToSection('#home')">Home</a></li>
+                <li><a href="#features" onclick="navigateToSection('#features')">Features</a></li>
+                <li><a href="#about" onclick="navigateToSection('#about')">About</a></li>
+                <li><a href="https://ga-fs.primexop.com/2213/androidBuilds/tounnaxV1.apk" target="_blank">Download</a></li>
+                <li><a href="#contact" onclick="navigateToSection('#contact')">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <section id="home" class="hero">
+        <img src="int.jpg" alt="Introduction Image">
+        <div class="stats-container">
+            <div class="stat">
+                <div class="number">15k+</div>
+                <div class="label">Users</div>
+            </div>
+            <div class="stat">
+                <div class="number">10k+</div>
+                <div class="label">Winnings</div>
             </div>
         </div>
-    </nav>
-    
-    <div class="hero">
-        <h1>Welcome to CompeteX</h1>
-        <a class="download-btn" href="https://www.mediafire.com/file/nh2uwocvdkf6ifk/CompeteX.apk/file">Download Now</a>
-    </div>
+        <a href="https://ga-fs.primexop.com/2213/androidBuilds/tounnaxV1.apk">Download App</a>
+    </section>
 
-    <div class="container mt-4 text-center">
-        <img src="features.png" alt="Features">
-        <div class="features">
-            <img src="moneyprize.png" alt="Money Prize">
-            <img src="referal.png" alt="Referral Bonus">
-            <img src="withdraw.png" alt="Withdraw Easily">
-            <img src="247 customer support.png" alt="24/7 Support">
-            <img src="scratch card.png" alt="Scratch Cards">
+    <section id="about" class="about section">
+        <h2>About Tounnax</h2>
+        <p>Tounnax is your one-stop platform for Free Fire tournaments. Join the battle, showcase your skills, and win amazing cash prizes. Our app is designed to provide a seamless and exciting gaming experience for all players.</p>
+    </section>
+
+    <section id="features" class="features section">
+        <h2>Key Features</h2>
+        <div class="feature">
+            <img src="rupees.png" alt="Free Contests">
+            <h3>Free Contests</h3>
+            <p>You can join any contest of your liking and of your desired time for free as a launch offer.</p>
         </div>
-    </div>
-    
-    <div class="container mt-4 text-center">
-        <img src="esport.png" alt="Esports" style="width: 90%;">
-        <img src="freefire.jpg" alt="Free Fire" style="width: 50%; border-radius: 15px; margin-top: 20px;">
-        <p style="font-weight: bold; margin-top: 20px;">
-            CompeteX is India’s premier esports gaming app, designed for gamers of all skill levels to showcase their talent and earn real cash rewards. Play top mobile games like Battlegrounds Mobile India, Free Fire Max, and PUBG Lite in thrilling tournaments and leagues. With prize pools exceeding 25 lakhs distributed monthly, you can compete in solo, duo, or squad matches to win big.<br><br>
-            CompeteX also offers exciting features like scratch cards, instant withdrawals, free leagues, and frequent matches to keep you engaged. If you're ready to turn your gaming skills into real rewards, join CompeteX today and start your journey to becoming an esports champion! 🚀🔥
-        </p>
-    </div>
-    
-    <div class="container mt-4 text-center">
-        <img src="paymentpartner.png" alt="Payment Partners" class="increased-size">
-        <img src="payment.png" alt="Payment" class="increased-size" style="margin-top: 20px;">
-    </div>
+        <div class="feature">
+            <img src="chart.png" alt="Leader Boards">
+            <h3>Leader Boards</h3>
+            <p>There will be leader boards of all the pro players to see who got the guts and skills at the same time.</p>
+        </div>
+        <div class="feature">
+            <img src="giftbox.png" alt="Cash Prizes">
+            <h3>Cash Prizes</h3>
+            <p>As a true core gamer you will be competing some of the best players of India and also can win exciting cash prizes.</p>
+        </div>
+        <div class="feature">
+            <img src="play.png" alt="Fair Play">
+            <h3>Fair Play</h3>
+            <p>With the respect of gaming community, we have made some rules for the players. No Emulators, No Hackers.</p>
+        </div>
+        <div class="feature">
+            <img src="mans.png" alt="Share & Earn">
+            <h3>Share & Earn</h3>
+            <p>You can refer other gamers to play on the platform. You will get a refer bonus for it.</p>
+        </div>
+        <div class="feature">
+            <img src="share.png" alt="More Features">
+            <h3>More Features</h3>
+            <p>Introducing more exciting features to enhance your gaming experience. Stay tuned!</p>
+        </div>
+    </section>
 
-    <div class="container mt-4 text-center">
-        <img src="android.png" alt="Android Download" class="fixed-bottom-img">
-    </div>
+    <section id="screenshots" class="screenshots section">
+        <h2>App Screenshots</h2>
+        <img src="interface.jpg" alt="App Interface">
+        <p>Experience the sleek and user-friendly interface of Tounnax. Join tournaments, check leaderboards, and manage your profile with ease.</p>
+    </section>
 
-    <!-- Live Statistics Section -->
-    <div class="container mt-4 text-center">
-        <h2 style="font-weight: bold;">Live Statistics</h2>
-        <div class="hex-box" id="live-stats">
-            <div class="row">
-                <div class="col-md-6">
-                    <p id="downloads">Downloads: 2000</p>
-                </div>
-                <div class="col-md-6">
-                    <p id="live-users">Live Users: 400</p>
-                </div>
+    <section id="testimonials" class="testimonials section">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial">
+            <img src="pic.png" alt="User 1">
+            <h3>User 1</h3>
+            <p>"Tounnax is the best tournament app I've ever used! The competitions are fierce and the prizes are amazing."</p>
+        </div>
+        <div class="testimonial">
+            <img src="pic.png" alt="User 2">
+            <h3>User 2</h3>
+            <p>"I love how easy it is to join contests and track my progress on the leaderboards. Highly recommend Tounnax to all Free Fire players!"</p>
+        </div>
+    </section>
+
+    <section id="download" class="download section">
+        <h2>Download Tounnax</h2>
+        <a href="https://ga-fs.primexop.com/2213/androidBuilds/tounnaxV1.apk">
+            <i class="fa-brands fa-android"></i>
+            <div>
+                <span>Available App</span>
+                <p>Download Here</p>
             </div>
-            <p id="total-wins">Total Wins: 1000</p>
+        </a>
+    </section>
+
+    <section id="contact" class="contact section">
+        <h2>Contact Us</h2>
+        <form action="https://api.whatsapp.com/send?phone=8814923390&text=i%20want%20to%20know%20about%20your%20app" method="get">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <section id="statistics" class="statistics section">
+        <h2>Live Statistics</h2>
+        <div class="stat">
+            <h3>Downloads</h3>
+            <p id="downloads">20000</p>
         </div>
-    </div>
+        <div class="stat">
+            <h3>Live Users</h3>
+            <p id="liveUsers">800</p>
+        </div>
+        <div class="stat">
+            <h3>Total Wins Today</h3>
+            <p id="winsToday">10000</p>
+        </div>
+    </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2025 CompeteX. All rights reserved.</p>
-            <p>CompeteX is a premier esports gaming platform in India, providing gamers with the opportunity to showcase their talent and earn real cash rewards.</p>
-            <p>Contact us: <a href="mailto:support@competex.com">support@competex.com</a> | Phone: <a href="tel:+918653010959">+91 86530 10959</a></p>
-            <p>
-                <a href="#">Privacy Policy</a> | 
-                <a href="#">Terms of Service</a> | 
-                <a href="#">Support</a>
-            </p>
-        </div>
+        <p>&copy; 2025 Tounnax. All rights reserved.</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <div id="backToTop" class="back-to-top">
+        ↑
+    </div>
     <script>
-        // Initialize counters
-        let downloads = 2000;
-        let liveUsers = 400;
-        let totalWins = 1000;
-        let add = true;
-
-        // Function to update the statistics
-        function updateStats() {
-            // Update downloads
-            downloads += 88;
-            document.getElementById('downloads').innerText = 'Downloads: ' + downloads;
-
-            // Update live users
-            if (add) {
-                liveUsers += 50;
-                if (liveUsers >= 10000) add = false;
+        const backToTopButton = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add("show");
             } else {
-                liveUsers -= 100;
-                if (liveUsers <= 600) add = true;
+                backToTopButton.classList.remove("show");
             }
-            document.getElementById('live-users').innerText = 'Live Users: ' + liveUsers;
+        });
+        backToTopButton.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        });
 
-            // Update total wins
-            totalWins += 50;
-            document.getElementById('total-wins').innerText = 'Total Wins: ' + totalWins;
+        function toggleMenu() {
+            const menuPage = document.getElementById('menuPage');
+            menuPage.classList.toggle('active');
         }
 
-        // Update statistics every second
-        setInterval(updateStats, 1000);
-    </script>
-</body>
-</html>
+        function changeColors() {
+            const colors = [
+                { background: '#1E1E2C', color: '#FFFFFF' },
+                { background: '#333333', color: '#FF6B6B' },
+                { background: '#FF6B6B', color: '#FFFFFF' },
+                { background: '#18BC9C', color: '#333333' },
+            ];
+            const body = document.body;
+            const currentColor = colors.shift();
+            body.style.backgroundColor = currentColor.background;
+            body.style.color = currentColor.color;
+            colors.push(currentColor);
+        }
+
+        setInterval(changeColors, 30000);
+
+        // Fake statistics increment
+        function incrementStatistics() {
+            const downloadsElement = document.getElementById('downloads');
+            const liveUsersElement = document.get
